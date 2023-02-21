@@ -5,11 +5,50 @@ MLflow runs as a service in your Domino cluster, fully integrated within your wo
 
 This repository holds the code and intructions that can be used to demonstrate this new capability which is available in private preview in Domino 5.4 (public preview to be released in Domino 5.5).
 
-## Prerequisite - Create PyTorch Environment
+## Prerequisite 
 
-ML Flow is included in the Domino Standard Environments, which means experiment tracking capabilities will work right out of the box. However, this example demonstrates how to use this capability with PyTorch Lightning so you will need to ensure that your environment has the PyTorch libriaries installed.
+ML Flow is included in the Domino Standard Environments, which means experiment tracking capabilities will work right out of the box. However, this example demonstrates how to use this capability with PyTorch Lightning so you will need to ensure that your environment has the PyTorch libriaries installed. If you do not already have an environment with PyTorch, follow [these instructions](#create-pytorch-environment) to create one.
 
-If you do not already have an environment with PyTorch, follow the instructions below to create one:
+## Run Demo
+
+### Create experiment from workspace
+
+Start by logging an experiment run from a workspace. 
+
+1. Create a workspace using your PyTorch Lightning environment.
+
+2. Clone this repo into the directory and run the `train.py` script.
+
+```
+git clone https://github.com/ddl-jwu/experiment-management
+python train.py
+```
+
+### Monitor and evaluate the results
+
+1. Navigate to the `Experiments` page and select the `mnist` experiment
+
+2. Click into the most recent run to monitor and evaluate the results that were just logged.
+
+### Create experiment from a job
+
+As your experiment matures, we recommend logging your experiments through jobs (rather than workspaces) to guarantee reproducibility:
+
+1. Start a new job from the Domino UI
+
+2. In the `File Name or Command` section, run the training script that was cloned into the workspace earlier.
+
+```
+python train.py
+```
+
+3. Make sure your PyTorch Lightning environment is selected.
+
+4. Click `Start` to begin the job.
+
+5. Follow the same steps as above to monitor and evaluate the results.
+
+## Create PyTorch Environment
 
 1. Navigate to the `Environments` page in the Domino UI
 
@@ -70,34 +109,3 @@ rstudio:
 ```
 
 10. Click `Build` to create environment.
-
-## Run Demo
-
-### Create experiment from workspace
-
-Experiments can be tracked within a workspace during the prototyping phase of the model. To track experiments within a workspace:
-
-1. Create a workspace using the PyTorch environment created above.
-
-2. Clone this repo into the directory and run the `train.py` script.
-
-```
-git clone https://github.com/ddl-jwu/experiment-management
-python train.py
-```
-
-### Track experiment from a job
-
-Experiments can be tracked from a job to ensure guaranteed reproducibility. To track experiments within a job:
-
-1. Start a new job from the Domino UI
-
-2. In the `File Name or Command` section, input the following:
-
-```
-git clone https://github.com/ddl-jwu/experiment-management && python train.py
-```
-
-3. Make sure the PyTorch environment that was created above is selected.
-
-4. Click `Start` to begin the job.

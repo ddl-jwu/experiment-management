@@ -34,7 +34,7 @@ python experiment-management/train.py
 
 As your experiment matures, we recommend logging your experiments through jobs (rather than workspaces) to guarantee reproducibility:
 
-1. Start a new job from the Domino UI
+1. Make sure your changes in the workspace are committed and start a new job from the Domino UI
 
 2. In the `File Name or Command` section, run the training script that was cloned into the workspace earlier.
 

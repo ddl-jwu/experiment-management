@@ -21,7 +21,7 @@ Start by logging an experiment run from a workspace.
 
 ```
 git clone https://github.com/ddl-jwu/experiment-management
-python train.py
+python experiment-management/train.py 
 ```
 
 ### Monitor and evaluate the results
@@ -39,7 +39,7 @@ As your experiment matures, we recommend logging your experiments through jobs (
 2. In the `File Name or Command` section, run the training script that was cloned into the workspace earlier.
 
 ```
-python train.py
+python experiment-management/train.py 
 ```
 
 3. Make sure your PyTorch Lightning environment is selected.
